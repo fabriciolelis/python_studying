@@ -15,7 +15,7 @@ def usuario_escolhe_jogada(n, m):
     print()
     naoEhValida = True
     while(naoEhValida):
-        if(quantRet > m or quantRet <= 0):
+        if(quantRet > m or quantRet <= 0 or quantRet > n):
             print("Opps! Jogada inválida! tente de novo.")
             quantRet = int(input("Quantas peças você vai tirar? "))
         else:
@@ -31,11 +31,11 @@ def partida():
     quantPecas = int(input("Quantas Peças? "))
     limitePecas = int(input("Limite de peças por jogada? "))
     badValue = True
-    if(limitePecas > 0 and limitePecas < quantPecas):
+    if(limitePecas > 0):
         badValue = False
     while badValue:
         limitePecas = int(input("Limite de peças por jogada? "))
-        if(limitePecas > 0 or limitePecas < quantPecas):
+        if(limitePecas > 0):
             badValue = False
     if(quantPecas % (limitePecas + 1) == 0):
         print("Você começa")
@@ -75,11 +75,11 @@ def campeonato():
         quantPecas = int(input("Quantas peças? "))
         limitePecas = int(input("Limite de peças por jogada? "))
         badValue = True
-        if(limitePecas > 0 and limitePecas < quantPecas):
+        if(limitePecas > 0):
             badValue = False
         while badValue:
             limitePecas = int(input("Limite de peças por jogada? "))
-            if(limitePecas > 0 and limitePecas < quantPecas):
+            if(limitePecas > 0):
                 badValue = False
         if (quantPecas % (limitePecas + 1) == 0):
             print("Você começa")
