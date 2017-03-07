@@ -75,6 +75,11 @@ def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
     sentencas = separa_sentencas(texto)
     print(sentencas)
+    print("A quantidade de sentenças: ", len(sentencas))
+    frases = []
+    for sentenca in sentencas:
+        frases.append(separa_frases(sentenca))
+    print(frases)
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e deve devolver o numero (0 a n-1) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
