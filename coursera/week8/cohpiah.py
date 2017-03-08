@@ -67,6 +67,15 @@ def n_palavras_diferentes(lista_palavras):
 
     return len(freq)
 
+def converte_matriz_em_lista(matriz):
+    lista = []
+    linhas = len(matriz)
+    for i in range(linhas):
+        colunas = len(matriz[i])
+        for j in range(colunas):
+            lista.append(matriz[i][j])
+    return lista
+
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
     pass
@@ -74,19 +83,14 @@ def compara_assinatura(as_a, as_b):
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
     sentencas = separa_sentencas(texto)
-    print(sentencas)
-    print("A quantidade de sentenças: ", len(sentencas))
-    frases = []
+    frases_matriz = []
     for sentenca in sentencas:
-        frases.append(separa_frases(sentenca))
-    linhas = len(frases)
-    frases_em_lista = []
-    for i in range(linhas):
-        colunas = len(frases[i])
-        for j in range(colunas):
-            frases_em_lista.append(frases[i][j])
-    print(frases_em_lista)
-    print("A quantidade de frases: ", len(frases_em_lista))
+        frases_matriz.append(separa_frases(sentenca))
+    frases = converte_matriz_em_lista(frases_matriz)
+    palavras_matriz = []
+    for frase in frases:
+        palavras_matriz.append(separa_palavras(frase))
+    print(palavras_matriz)
 
 
 def avalia_textos(textos, ass_cp):
