@@ -79,7 +79,15 @@ def calcula_assinatura(texto):
     frases = []
     for sentenca in sentencas:
         frases.append(separa_frases(sentenca))
-    print(frases)
+    linhas = len(frases)
+    frases_em_lista = []
+    for i in range(linhas):
+        colunas = len(frases[i])
+        for j in range(colunas):
+            frases_em_lista.append(frases[i][j])
+    print(frases_em_lista)
+    print("A quantidade de frases: ", len(frases_em_lista))
+
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e deve devolver o numero (0 a n-1) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
