@@ -1,4 +1,5 @@
 import re
+import math
 
 def le_assinatura():
     '''A funcao le os valores dos tracos linguisticos do modelo e devolve uma assinatura a ser comparada com os textos fornecidos'''
@@ -78,26 +79,65 @@ def converte_matriz_em_lista(matriz):
 
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
+    tamanho = len(as_a)
+    i = 0
+    similaridade = 0
+    somatorio = 0
+    while i < tamanho:
+        somatorio = somatorio + math.fabs(as_a[i] - as_b[i])
+        i = i + 1
+    similaridade = somatorio / tamanho
+    return similaridade
+
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
     sentencas = separa_sentencas(texto)
     frases_matriz = []
+    total_caracteres_sen = 0
+
     for sentenca in sentencas:
         frases_matriz.append(separa_frases(sentenca))
+        total_caracteres_sen =  total_caracteres_sen + len(sentenca)
     frases = converte_matriz_em_lista(frases_matriz)
+    tamanho_medio_sentenca = total_caracteres_sen / len(sentencas)
+
     palavras_matriz = []
+    total_carc_frases = 0
     for frase in frases:
         palavras_matriz.append(separa_palavras(frase))
-    print(palavras_matriz)
+        total_carc_frases = total_carc_frases + len(frase)
+    palavras = converte_matriz_em_lista(palavras_matriz)
+    tamanho_medio_frase = total_carc_frases / len(frases)
 
+    tamanho_palavras = 0
+    total_palavras = len(palavras)
+    total_palavras_dif = n_palavras_diferentes(palavras)
+    total_palavras_unica = n_palavras_unicas(palavras)
+
+    for palavra in palavras:
+        tamanho_palavras = tamanho_palavras + len(palavra)
+    tamanho_medio_palavras = tamanho_palavras / total_palavras
+
+    typeToken = total_palavras_dif / total_palavras
+    hapaxLegomana = total_palavras_unica / total_palavras
+    complexidade = len(frases) / len(sentencas)
+
+    return [tamanho_medio_palavras, typeToken, hapaxLegomana, tamanho_medio_sentenca, complexidade, tamanho_medio_frase]
 
 def avalia_textos(textos, ass_cp):
-    '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e deve devolver o numero (0 a n-1) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
+    '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e deve devolver o numero (0 a n-1)
+    do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
+    assinaturas = []
+    calculos_ass = []
     for texto in textos:
-        calcula_assinatura(texto)
+        assinaturas.append(calcula_assinatura(texto))
+    for assinatura in assinaturas:
+        calculos_ass.append(compara_assinatura(assinatura, ass_cp))
+    indice = calculos_ass.index(min(calculos_ass))
+    print("O autor do texto", indice + 1, "está infectado com COH-PIAH")
+    return indice
 
-valores_assinatura = le_assinatura()
+assinatura_cp = le_assinatura()
 textos_lidos = le_textos()
-avalia_textos(textos_lidos, valores_assinatura)
+avalia_textos(textos_lidos, assinatura_cp)
