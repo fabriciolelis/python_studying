@@ -5,6 +5,6 @@ while i < altura:
     j = 0
     while j < largura:
         print("#", end="")
-        j = j + 1
+        j += 1
     print()
-    i = i + 1
+    i += 1

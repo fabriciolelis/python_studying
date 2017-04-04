@@ -11,7 +11,8 @@ while (inteiro // 10) != 0 and not adjacente:
     atual = (inteiro // 10) % 10
     inteiro = inteiro // 10
 
-if adjacente:
-    print("sim")
-else:
-    print("não")
+print("sim" if adjacente else "não")
+# if adjacente:
+#     print("sim")
+# else:
+#     print("não")

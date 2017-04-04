@@ -2,7 +2,7 @@ inteiro = int(input("Digite o valor de inteiro: "))
 soma = 0
 
 while (inteiro // 10) != 0:
-    soma = soma + (inteiro % 10)
+    soma += inteiro % 10
     inteiro = inteiro // 10
-soma = soma + inteiro
+soma += inteiro
 print(soma)

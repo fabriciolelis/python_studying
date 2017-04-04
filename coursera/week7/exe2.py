@@ -1,7 +1,7 @@
 def soma_elementos(lista):
-    soma = 0;
+    soma = 0
     for value in lista:
-        soma = soma + value
+        soma += value
     return soma
 
 

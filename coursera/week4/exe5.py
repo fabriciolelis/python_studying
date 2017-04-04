@@ -6,9 +6,10 @@ primo = True
 while n < inteiro and primo:
     if inteiro % n == 0:
         primo = False
-    n = n + 1
+    n += 1
 
-if(primo):
-    print("primo")
-else:
-    print("não primo")
+print("primo" if primo else "não primo")
+# if(primo):
+#     print("primo")
+# else:
+#     print("não primo")

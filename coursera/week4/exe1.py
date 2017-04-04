@@ -4,5 +4,5 @@ fatorial = 1
 
 while n > 1:
     fatorial = n * fatorial
-    n = n - 1
+    n -= 1
 print(fatorial)

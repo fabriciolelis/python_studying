@@ -4,7 +4,7 @@ def dimensoes(matriz):
     for linha in range(len(matriz)):
         coluna = 0
         for coluna in range(len(matriz[0])):
-            coluna = coluna + 1
-        linha = linha + 1
+            coluna += 1
+        linha += 1
         col_final = coluna
     return print(str(linha) + "X" + str(col_final))

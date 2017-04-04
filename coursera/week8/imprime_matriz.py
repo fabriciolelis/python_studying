@@ -4,7 +4,7 @@ def imprime_matriz(matriz):
     for i in range(linhas):
         for j in range(colunas):
             if j < colunas - 1:
-                print (matriz[i][j],  end =' ')
+                print (matriz[i][j],  end=' ')
             else:
                 print(matriz[i][j], end='')
         print()
