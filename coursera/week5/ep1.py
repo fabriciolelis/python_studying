@@ -1,67 +1,64 @@
 def computador_escolhe_jogada(n, m):
     resto = n % (m + 1)
-    if(resto > 0 and resto <= m):
-        quantRet = resto
+    if 0 < resto <= m:
+        quant_ret = resto
     else:
-        quantRet = m
-    if(quantRet == 1):
-        print("O computador tirou um peça")
-    else:
-        print("O computador tirou", quantRet, "peças")
-    return quantRet
+        quant_ret = m
+    print("O computador tirou um peça" if quant_ret == 1 else "O computador tirou", quant_ret, "peças")
+    return quant_ret
+
 
 def usuario_escolhe_jogada(n, m):
-    quantRet = int(input("Quantas peças você vai tirar? "))
+    quant_ret = int(input("Quantas peças você vai tirar? "))
     print()
-    naoEhValida = True
-    while(naoEhValida):
-        if(quantRet > m or quantRet <= 0 or quantRet > n):
+    nao_eh_valida = True
+    while nao_eh_valida:
+        if quant_ret > m or quant_ret <= 0 or quant_ret > n:
             print("Opps! Jogada inválida! tente de novo.")
-            quantRet = int(input("Quantas peças você vai tirar? "))
+            quant_ret = int(input("Quantas peças você vai tirar? "))
         else:
-            naoEhValida = False
-    if(quantRet == 1):
-        print("Você tirou um peça")
-    else:
-        print("Você tirou", quantRet, "peças")
-    return quantRet
+            nao_eh_valida = False
+    print("Você tirou um peça" if quant_ret == 1 else "Você tirou", quant_ret, "peças")
+    return quant_ret
+
 
 def partida():
     print("Você escolheu partida isolada!")
-    quantPecas = int(input("Quantas Peças? "))
-    limitePecas = int(input("Limite de peças por jogada? "))
-    badValue = True
-    if(limitePecas > 0):
-        badValue = False
-    while badValue:
-        limitePecas = int(input("Limite de peças por jogada? "))
-        if(limitePecas > 0):
-            badValue = False
-    if(quantPecas % (limitePecas + 1) == 0):
+    quant_pecas = int(input("Quantas Peças? "))
+    limite_pecas = int(input("Limite de peças por jogada? "))
+    bad_value = True
+    if (limite_pecas > 0):
+        bad_value = False
+    while bad_value:
+        limite_pecas = int(input("Limite de peças por jogada? "))
+        if limite_pecas > 0:
+            bad_value = False
+    if quant_pecas % (limite_pecas + 1) == 0:
         print("Você começa")
         print()
-        quantPecas = quantPecas - usuario_escolhe_jogada(quantPecas, limitePecas)
+        quant_pecas = quant_pecas - usuario_escolhe_jogada(quant_pecas, limite_pecas)
         euJoguei = True
     else:
         print("Computador começa")
         print()
-        quantPecas = quantPecas - computador_escolhe_jogada(quantPecas, limitePecas)
+        quant_pecas = quant_pecas - computador_escolhe_jogada(quant_pecas, limite_pecas)
         euJoguei = False
-    while quantPecas > 0:
-        if(quantPecas == 1):
+    while quant_pecas > 0:
+        if (quant_pecas == 1):
             print("Agora resta apenas uma peça no tabuleiro")
         else:
-            print("Agora restam", quantPecas, "peças no tabuleiro")
-        if(euJoguei):
-            quantPecas = quantPecas - computador_escolhe_jogada(quantPecas, limitePecas)
+            print("Agora restam", quant_pecas, "peças no tabuleiro")
+        if (euJoguei):
+            quant_pecas = quant_pecas - computador_escolhe_jogada(quant_pecas, limite_pecas)
             euJoguei = False
         else:
-            quantPecas = quantPecas - usuario_escolhe_jogada(quantPecas, limitePecas)
+            quant_pecas = quant_pecas - usuario_escolhe_jogada(quant_pecas, limite_pecas)
             euJoguei = True
-    if(euJoguei):
+    if (euJoguei):
         print("Fim de jogo!! Você ganhou")
     else:
         print("Fim de jogo!! O computador ganhou!")
+
 
 def campeonato():
     rodada = 1
@@ -75,11 +72,11 @@ def campeonato():
         quantPecas = int(input("Quantas peças? "))
         limitePecas = int(input("Limite de peças por jogada? "))
         badValue = True
-        if(limitePecas > 0):
+        if (limitePecas > 0):
             badValue = False
         while badValue:
             limitePecas = int(input("Limite de peças por jogada? "))
-            if(limitePecas > 0):
+            if (limitePecas > 0):
                 badValue = False
         if (quantPecas % (limitePecas + 1) == 0):
             print("Você começa")
@@ -92,17 +89,17 @@ def campeonato():
             quantPecas = quantPecas - computador_escolhe_jogada(quantPecas, limitePecas)
             euJoguei = False
         while quantPecas > 0:
-            if(quantPecas == 1):
+            if (quantPecas == 1):
                 print("Agora resta apenas uma peça no tabuleiro")
             else:
                 print("Agora restam", quantPecas, "peças no tabuleiro")
-            if(euJoguei):
+            if (euJoguei):
                 quantPecas = quantPecas - computador_escolhe_jogada(quantPecas, limitePecas)
                 euJoguei = False
             else:
                 quantPecas = quantPecas - usuario_escolhe_jogada(quantPecas, limitePecas)
                 euJoguei = True
-        if(euJoguei):
+        if (euJoguei):
             print("Fim de Jogo!! Você ganhou!")
             minhasVitorias += 1
         else:
@@ -122,5 +119,6 @@ def main():
         partida()
     else:
         campeonato()
+
 
 main()
