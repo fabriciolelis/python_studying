@@ -1,4 +1,4 @@
-def mais_curto(lista_nomes):
+def menor_nome(lista_nomes):
     nome_mais_curto = lista_nomes[0].strip()
     for nome in lista_nomes:
         if len(nome_mais_curto) > len(nome.strip()):
@@ -6,7 +6,7 @@ def mais_curto(lista_nomes):
 
     return nome_mais_curto.capitalize()
 
-lista = ["larissa", "joão", "fabricio", "    Ju", "Solange    ", "Julianne"]
+lista = ['maria', 'josé', 'PAULO', 'Catarina']
 
-print(mais_curto(lista))
+menor_nome(lista)
 
