@@ -1,0 +1,5 @@
+frase = input('Digite uma frase: ')
+total = frase.lower().count('a')
+first = frase.lower().find('a')
+last = frase.index('v', 0, len(frase))
+print('A letra "a" aparece {} vezes, a primeira em {} e a última em {}'.format(total, first, last))
