@@ -1,3 +1,4 @@
+print('{:=^40}'.format(' LOJAS FABRICIO '))  # ^ - CENTRALIZADO
 preco = float(input('Preço das compras: R$'))
 
 print('''FORMAS DE PAGAMENTO
@@ -11,13 +12,12 @@ opcao = int(input('Qual é a sua opção? '))
 if opcao == 1:
     desconto = preco * 10 / 100
     valor = preco - desconto
-    print('Sua compra de {:.2f} vai custar {:.2f} no final.'.format(preco, valor))
 elif opcao == 2:
     desconto = preco * 5 / 100
     valor = preco - desconto
-    print('Sua compra de {:.2f} vai custar {:.2f} no final.'.format(preco, valor))
 elif opcao == 3:
     parcelas = preco / 2
+    valor = preco
     print('Sua compra será parcela em 2x de R${:.2f} SEM JUROS'.format(parcelas))
 elif opcao == 4:
     qunt_parcelas = int(input('Quantas parcelas? '))
@@ -25,6 +25,7 @@ elif opcao == 4:
     valor = preco + juros
     parcelas = valor / qunt_parcelas
     print('Sua compra será parcelada em {}x de R${:.2f} COM JUROS.'.format(qunt_parcelas, parcelas))
-    print('Sua compra de R${:.2f} vai custar R${:.2f} no final.'.format(preco, valor))
 else:
+    valor = preco
     print('Está opção não existe. Digite uma opção válida!')
+print('Sua compra de R${:.2f} vai custar R${:.2f} no final.'.format(preco, valor))
