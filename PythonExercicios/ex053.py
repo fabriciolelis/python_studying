@@ -1,4 +1,4 @@
-frase = input('Digite a frase: ').replace(" ", "")
+frase = input('Digite a frase: ').replace(" ", "").strip()
 invertido = frase.replace(" ", "")[::-1]
 print('O inverso de {} é {}'.format(frase.upper(), invertido.upper()))
 if invertido == frase:
