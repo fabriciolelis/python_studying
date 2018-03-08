@@ -9,10 +9,11 @@ vitorias = 0
 while True:
     venceu = False
     computador = randint(0, 10)
-    soma = 0
     jogador = int(input('Digite um valor: '))
-    resposta = input('Par ou ímpar? [P/I] ')
+    resposta = ' '
     soma = computador + jogador
+    while resposta not in 'PpIi':
+        resposta = input('Par ou ímpar? [P/I] ').strip().upper()[0]  # pega apenas o primeiro caracter da resposta
     if soma % 2 == 0:
         resultado = 'PAR'
     else:
